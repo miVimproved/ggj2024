@@ -1,0 +1,181 @@
+[gd_scene load_steps=26 format=3 uid="uid://bnu6fwfr3h7g7"]
+
+[ext_resource type="Script" path="res://potion/potionscript.gd" id="2_2611s"]
+[ext_resource type="Texture2D" uid="uid://dlp0ka3k0noxv" path="res://sprites/circl/potion.circle.empty.png" id="2_mjgm2"]
+[ext_resource type="Texture2D" uid="uid://ycn0js0gjgcn" path="res://sprites/circl/potion.circle.liquid.0.png" id="2_uogby"]
+[ext_resource type="Texture2D" uid="uid://158ermsirslu" path="res://sprites/circl/potion.circle.liquid.1.png" id="3_28dx7"]
+[ext_resource type="Texture2D" uid="uid://cfyvm12mae8tl" path="res://sprites/circl/potion.circle.liquid.2.png" id="4_fybnu"]
+[ext_resource type="Texture2D" uid="uid://fki725te8teo" path="res://sprites/triang/Potion.Triangle.Liquid.01.png" id="5_c14xt"]
+[ext_resource type="Texture2D" uid="uid://dt4ouoxfxp2pu" path="res://sprites/triang/potion.triangle.empty.png" id="6_k4cng"]
+[ext_resource type="Texture2D" uid="uid://bwpskla2dy4fs" path="res://sprites/triang/Potion.Triangle.Liquid.02.png" id="6_rhl0j"]
+[ext_resource type="Texture2D" uid="uid://jnejn3m657gr" path="res://sprites/triang/Potion.Triangle.Liquid.03.png" id="7_30xwk"]
+[ext_resource type="Texture2D" uid="uid://dih164qvfvkwt" path="res://sprites/squar/potion.square.empty.png" id="7_uo0ti"]
+[ext_resource type="Texture2D" uid="uid://7b7878s21mfl" path="res://sprites/squar/Potion.Square.Liquid.01.png" id="8_7uuq5"]
+[ext_resource type="Texture2D" uid="uid://wum5kbtgh64c" path="res://sprites/squar/Potion.Square.Liquid.02.png" id="9_quwkt"]
+[ext_resource type="Texture2D" uid="uid://cv46vy1bfswvm" path="res://sprites/squar/Potion.Square.Liquid.03.png" id="10_j7ogi"]
+[ext_resource type="AudioStream" uid="uid://ccra3t1gif5vv" path="res://sfx/586114__1noxaj__destruction_metal_pole.wav" id="14_dhh5y"]
+[ext_resource type="AudioStream" uid="uid://br0spr7v4013c" path="res://sfx/glass break-001.wav" id="15_kxf1x"]
+[ext_resource type="AudioStream" uid="uid://dumbant2si3ke" path="res://sfx/glass break-002.wav" id="16_54eqp"]
+[ext_resource type="AudioStream" uid="uid://lm4fhq0pmcpl" path="res://sfx/glass break-003.wav" id="17_hteu8"]
+[ext_resource type="AudioStream" uid="uid://cu37wi1de6rk7" path="res://sfx/glass break-004.wav" id="18_ghdvq"]
+[ext_resource type="Texture2D" uid="uid://mglajt0pmlaa" path="res://sprites/temp.svg" id="19_bdmpk"]
+[ext_resource type="Texture2D" uid="uid://hyb5xgbyd27t" path="res://sprites/BrokenGlass01.png" id="20_tasq1"]
+[ext_resource type="Texture2D" uid="uid://cg7htwywl5wmy" path="res://sprites/BrokenGlass02.png" id="21_l67qn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sjs43"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_uogby")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_28dx7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fybnu")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_c14xt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rhl0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_30xwk")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_7uuq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_quwkt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_j7ogi")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2p8nj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mjgm2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_k4cng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_uo0ti")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p1jnm"]
+radius = 70.1142
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s6hhd"]
+playback_mode = 1
+random_pitch = 1.5
+random_volume_offset_db = 2.0
+streams_count = 5
+stream_0/stream = ExtResource("14_dhh5y")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("15_kxf1x")
+stream_1/weight = 3.0
+stream_2/stream = ExtResource("16_54eqp")
+stream_2/weight = 3.0
+stream_3/stream = ExtResource("17_hteu8")
+stream_3/weight = 3.0
+stream_4/stream = ExtResource("18_ghdvq")
+stream_4/weight = 3.0
+
+[node name="Potion" type="Area2D"]
+z_index = 2
+script = ExtResource("2_2611s")
+
+[node name="sprite" type="Node2D" parent="."]
+position = Vector2(0, 7)
+scale = Vector2(0.5, 0.5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="sprite"]
+sprite_frames = SubResource("SpriteFrames_sjs43")
+animation = &"2"
+
+[node name="Temp" type="AnimatedSprite2D" parent="sprite"]
+position = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_2p8nj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p1jnm")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_s6hhd")
+bus = &"sfx"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 128
+lifetime = 5.0
+one_shot = true
+explosiveness = 0.9
+texture = ExtResource("19_bdmpk")
+emission_shape = 1
+emission_sphere_radius = 50.0
+direction = Vector2(0, -1)
+spread = 10.0
+gravity = Vector2(0, 1000)
+initial_velocity_min = 900.0
+initial_velocity_max = 1000.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 1
+lifetime = 5.0
+one_shot = true
+explosiveness = 0.9
+texture = ExtResource("20_tasq1")
+emission_shape = 1
+emission_sphere_radius = 50.0
+direction = Vector2(0, -1)
+spread = 10.0
+gravity = Vector2(0, 1000)
+initial_velocity_min = 900.0
+initial_velocity_max = 1000.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 1
+lifetime = 5.0
+one_shot = true
+explosiveness = 0.9
+texture = ExtResource("21_l67qn")
+emission_shape = 1
+emission_sphere_radius = 50.0
+direction = Vector2(0, -1)
+spread = 10.0
+gravity = Vector2(0, 1000)
+initial_velocity_min = 900.0
+initial_velocity_max = 1000.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+
+[connection signal="area_entered" from="." to="." method="Entered"]
+[connection signal="area_exited" from="." to="." method="Exited"]

@@ -1,0 +1,74 @@
+[gd_scene load_steps=13 format=3 uid="uid://b3ayrnd4ovgap"]
+
+[ext_resource type="Script" path="res://bookshelf/bookshelf.gd" id="1_e448u"]
+[ext_resource type="Texture2D" uid="uid://c65gf2jwgjp11" path="res://sprites/Books.png" id="1_k6bgn"]
+[ext_resource type="Texture2D" uid="uid://bgoygf412jjtl" path="res://sprites/Books.Candles.png" id="2_5plc3"]
+[ext_resource type="Texture2D" uid="uid://b8422fnl6d62g" path="res://sprites/shev/Blocker.Books.png" id="2_fgmdo"]
+[ext_resource type="Texture2D" uid="uid://cinfr5tnwpo3r" path="res://sprites/shev/Blocker.BooksCandle1.png" id="3_jv0am"]
+[ext_resource type="Texture2D" uid="uid://civndio7g2446" path="res://sprites/shev/Blocker.BooksCandle2.png" id="4_2d5re"]
+[ext_resource type="Texture2D" uid="uid://dgmc7orhpo6jj" path="res://sprites/shev/Blocker.Candles.png" id="5_th0f8"]
+[ext_resource type="Texture2D" uid="uid://bxjqfosq423s4" path="res://sprites/shev/Blocker.Web.png" id="6_j4mnr"]
+[ext_resource type="Texture2D" uid="uid://dubpa0w0vrpjo" path="res://sprites/shev/Blocker.WebAndBooks.png" id="7_8h0y3"]
+[ext_resource type="Texture2D" uid="uid://cxlhwjw68d6wi" path="res://sprites/shev/Blocker.WebAndCandles.png" id="8_qmbqy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eex1y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fgmdo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jv0am")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2d5re")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_th0f8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_j4mnr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8h0y3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qmbqy")
+}],
+"loop": true,
+"name": &"a",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_k6bgn")
+}],
+"loop": true,
+"name": &"book",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5plc3")
+}],
+"loop": true,
+"name": &"flame",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p1jnm"]
+radius = 27.6586
+
+[node name="Shev" type="Area2D"]
+modulate = Color(0.5, 0.5, 0.5, 1)
+scale = Vector2(0.9, 0.9)
+script = ExtResource("1_e448u")
+
+[node name="Books" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_eex1y")
+animation = &"a"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p1jnm")

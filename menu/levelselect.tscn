@@ -1,0 +1,119 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6el4uxpfscpu"]
+
+[ext_resource type="Script" path="res://menu/levelselect.gd" id="1_em3qd"]
+[ext_resource type="Texture2D" uid="uid://ps343dfkhc52" path="res://sprites/Shelf.png" id="2_bhlss"]
+[ext_resource type="Texture2D" uid="uid://bpco7cu8i0bs" path="res://sprites/Title.png" id="3_rtasp"]
+
+[node name="Levelselect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_em3qd")
+
+[node name="background" type="Node2D" parent="."]
+z_index = -3
+
+[node name="Shelf4" type="Sprite2D" parent="background"]
+position = Vector2(630, 805)
+scale = Vector2(1.86457, 6.2009)
+texture = ExtResource("2_bhlss")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 194.21)
+layout_mode = 2
+texture = ExtResource("3_rtasp")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "You’re a witch, and you’re alone in a rival witch's cottage.
+Can you rearrange their potions so that their cats knock them all to the ground?
+Each cat will choose what color(s) of potions they knock down when they reach one."
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_right = 150
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="level0" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="level1" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="level2" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="level3" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+text = "   FULLSCREEN   "
+
+[node name="Control2" type="Control" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+text = "SFX Volume:"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="Control" type="Control" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+text = "MUSIC Volume:"
+
+[node name="HSlider2" type="HSlider" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/HBoxContainer/Button" to="." method="fullscreen"]
+[connection signal="value_changed" from="VBoxContainer/MarginContainer2/HBoxContainer/HSlider" to="." method="SetSFXVolume"]
+[connection signal="value_changed" from="VBoxContainer/MarginContainer2/HBoxContainer/HSlider2" to="." method="SetMusicVolume"]
